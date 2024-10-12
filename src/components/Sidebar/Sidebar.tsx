@@ -1,16 +1,27 @@
 import { Edge, Node } from "@xyflow/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { createNodesFromSchemaInput } from "../../utils/createNodesFromInput";
 import { createEdgesFromSchemaInput } from "../../utils/createEdgesFromInput";
-import { basicInitialSchema, expertInitialSchema } from "../../data/dbschema";
+import { basicInitialSchema } from "../../data/dbschema";
+import { handleExport } from "../../utils/downloadSchemaTextFile";
 
-type SidebarProps = {
+type T_Sidbar = {
   setNodes: React.Dispatch<React.SetStateAction<Node[]>>;
   setEdges: React.Dispatch<React.SetStateAction<Edge[]>>;
+  projectName: string;
+  exportSchema: boolean;
+  setExportSchema: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const Sidebar: React.FC<SidebarProps> = ({ setNodes, setEdges }) => {
-  const [schema, setSchema] = useState<string>(expertInitialSchema);
+const Sidebar: React.FC<T_Sidbar> = ({
+  setNodes,
+  setEdges,
+  projectName,
+  exportSchema,
+  setExportSchema,
+}) => {
+  const [schema, setSchema] = useState<string>(basicInitialSchema);
+
   const convertSchema = () => {
     const newNodes: Node[] = createNodesFromSchemaInput(schema);
     const newEdges: Edge[] = createEdgesFromSchemaInput(newNodes, schema);
@@ -18,6 +29,13 @@ const Sidebar: React.FC<SidebarProps> = ({ setNodes, setEdges }) => {
     setNodes(newNodes);
     setEdges(newEdges);
   };
+
+  useEffect(() => {
+    if (exportSchema) {
+      handleExport(projectName, schema);
+      setExportSchema(false);
+    }
+  }, [exportSchema]);
 
   return (
     <div className="bg-Black text-White p-2 pb-4 h-full flex flex-col gap-2">

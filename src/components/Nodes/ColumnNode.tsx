@@ -7,12 +7,12 @@ import { MdDoNotDisturbAlt, MdOutlineKey } from "react-icons/md";
 import Tooltip from "../Tooltip/Tooltip";
 import { convertToTitleCase } from "../../utils/convertToTitleCase";
 
-type ColumnNodeProps = {
+type T_ColumnNode = {
   column: T_Column;
   tableName: string;
 };
 
-const ColumnNode: React.FC<ColumnNodeProps> = ({ column, tableName }) => {
+const ColumnNode: React.FC<T_ColumnNode> = ({ column, tableName }) => {
   const [showPrimaryKeyTooltip, setShowPrimaryKeyTooltip] =
     useState<boolean>(false);
   const [showColumnNote, setShowColumnNote] = useState<boolean>(false);

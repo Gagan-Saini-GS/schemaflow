@@ -1,7 +1,6 @@
 import { Node, Edge } from "@xyflow/react";
 
-export const basicInitialSchema = `
-Table Users{
+export const basicInitialSchema = `Table Users{
      id int,
      name string,
      email string,
@@ -24,8 +23,7 @@ Table Comments{
     user_id int > ref Users.id,
 }`;
 
-export const expertInitialSchema = `
-Table Users {
+export const expertInitialSchema = `Table Users {
     id int [primary_key],
     name string [50],
     email string [UNIQUE, NOT NULL],

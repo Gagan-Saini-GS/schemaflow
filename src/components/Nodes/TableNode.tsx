@@ -1,14 +1,14 @@
 import { T_Column } from "../../types/tableColumns";
 import ColumnNode from "./ColumnNode";
 
-type TableNodeProps = {
+type T_TableNode = {
   data: {
     tableName: string;
     columns: T_Column[];
   };
 };
 
-const TableNode: React.FC<TableNodeProps> = ({ data }) => {
+const TableNode: React.FC<T_TableNode> = ({ data }) => {
   return (
     <div className="w-60 bg-White shadow-md rounded-md">
       <div className="text-lg font-bold bg-Blue text-White text-center py-2 rounded-t-md">
