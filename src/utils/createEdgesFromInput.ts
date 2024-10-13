@@ -11,6 +11,13 @@ export const createEdgesFromSchemaInput = (
   const edges: Edge[] = [];
   let currentTable: string | null = null;
 
+  const nodeTypes = nodes.map((node) => {
+    return {
+      id: node.id,
+      type: node.type,
+    };
+  });
+
   lines.forEach((line) => {
     if (line.startsWith("Table")) {
       const tableName = line.match(/Table (\w+)\s*\{/)?.[1];
@@ -47,6 +54,44 @@ export const createEdgesFromSchemaInput = (
 
         // Push edge to the array
         edges.push(edge);
+      }
+    } else {
+      const columnValues = line.split(" ");
+
+      const sourceColumnName = columnValues[0];
+      const columnType = columnValues[1]?.replace(/,$/, ""); // Remove "," from last in Enum type
+
+      if (columnType) {
+        const enumTypes = nodeTypes.filter((node) => {
+          return node.id === columnType && node?.type === "EnumNode";
+        });
+
+        const enumName = enumTypes[0]?.id;
+
+        if (enumTypes.length > 0) {
+          // Create the edge
+          const edge: Edge = {
+            id: `e-${currentTable}-${sourceColumnName}-Enum-${enumName}`,
+            source: currentTable || "",
+            target: enumName,
+            sourceHandle: `${currentTable}-${sourceColumnName}-source`,
+            targetHandle: `${enumName}-Enum-target`,
+            type: "smoothstep",
+            animated: true,
+          };
+
+          const x = nodes.filter((node: Node) => node.id === currentTable)[0];
+
+          // @ts-ignore
+          x.data.columns.forEach((column: any) => {
+            if (column.type === enumName) {
+              column.hasConnection = true;
+            }
+          });
+
+          // Push edge to the array
+          edges.push(edge);
+        }
       }
     }
   });

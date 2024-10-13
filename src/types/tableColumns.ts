@@ -8,3 +8,8 @@ export type T_Column = {
   note?: string;
   hasConnection: boolean;
 };
+
+export type T_Enum = {
+  value: string;
+  note?: string;
+};

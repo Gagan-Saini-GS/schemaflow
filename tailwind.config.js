@@ -12,6 +12,7 @@ module.exports = {
         DarkBlue: "#022F40",
         Light: "#E8F0FF",
         Blue: "#3083DC",
+        Coral: "#FF6B6B",
       },
     },
   },
