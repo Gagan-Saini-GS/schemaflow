@@ -30,6 +30,7 @@ export const expertInitialSchema = `Table Users {
     password string [not null],
     avatar string,
     bio string [250, NOTE="Programmer"],
+    status UserStatus,
     created_at Date [DEFAULT="Date.now()"],
     updated_at Date,
 }
@@ -37,6 +38,7 @@ export const expertInitialSchema = `Table Users {
 Table Posts {
   id int [primary_key],
   title string [300],
+  type PostType,
   image_url string [500],
   user_id int > ref Users.id,
 }
@@ -46,7 +48,23 @@ Table Comments{
   content string [100, NOT NULL],
   user_id int > ref Users.id,
   post_id int > ref Posts.id,
-}`;
+} 
+
+Enum UserStatus{
+  online,
+  offline,
+  available,
+  do_not_distrub [Note="DND"],
+  on_leave [Note="Holiday"],
+}
+
+Enum PostType{
+  image,
+  video,
+  audio,
+  article,
+}
+`;
 
 export const initialNodes: Node[] = [
   {

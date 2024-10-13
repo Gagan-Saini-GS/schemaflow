@@ -17,6 +17,12 @@ type T_Symbol = {
   symbol: string | ReactNode;
 };
 
+type T_NodeStyle = {
+  id: string;
+  type: string;
+  boxColor: string;
+};
+
 export const docs: T_Docs[] = [
   {
     id: "tables",
@@ -124,6 +130,37 @@ export const docs: T_Docs[] = [
     email string [UNIQUE],
 }`,
   },
+  {
+    id: "enums",
+    title: "How to create Enum?",
+    description: [
+      "EnumName, Replace it with the name of the Enum you want to create. A Enum will contain columns that define its structure.",
+      "Give all the values in enum in different line and each line ends with comma.",
+    ],
+    code: `Enum EnumName {
+        
+}`,
+    example: `Enum UserStatus{
+    online,
+    offline,
+    available,
+}`,
+  },
+  {
+    id: "enum-notes",
+    title: "How to Add a NOTE to an Enum?",
+    description: [
+      "You can add additional information to any column using the NOTE keyword in square brackets.",
+    ],
+    code: `column_name EnumName [NOTE="some note here"]`,
+    example: `Enum UserStatus{
+    online,
+    offline,
+    available,
+    do_not_distrub [Note="DND"],
+    on_leave [Note="Holiday"],
+}`,
+  },
 ];
 
 export const symbols: T_Symbol[] = [
@@ -151,5 +188,18 @@ export const symbols: T_Symbol[] = [
     label: "NOTE",
     value: "Adds a comment or explanation to a column.",
     symbol: <FaRegNoteSticky className="w-4 h-4" />,
+  },
+];
+
+export const nodeStyles: T_NodeStyle[] = [
+  {
+    id: "table",
+    type: "Table Node",
+    boxColor: "bg-Blue",
+  },
+  {
+    id: "enum",
+    type: "Enum Node",
+    boxColor: "bg-Coral",
   },
 ];

@@ -1,5 +1,5 @@
 import React from "react";
-import { docs, symbols } from "../../data/docs";
+import { docs, nodeStyles, symbols } from "../../data/docs";
 import { IoClose } from "react-icons/io5";
 
 type T_Docs = {
@@ -62,6 +62,21 @@ const Docs: React.FC<T_Docs> = ({ openDocs, setOpenDocs }) => {
                       <div>{symbol.label}</div>
                     </div>
                     <div>↳ {symbol.value}</div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+          <div className="pt-8">
+            <div className="text-xl font-medium pb-2">Node Styles</div>
+            <div className="flex flex-col gap-1">
+              {nodeStyles.map((node) => {
+                return (
+                  <div key={node.id} className="flex items-center gap-1">
+                    <div
+                      className={`${node.boxColor} w-4 h-4 rounded-sm`}
+                    ></div>
+                    <div>{node.type}</div>
                   </div>
                 );
               })}
