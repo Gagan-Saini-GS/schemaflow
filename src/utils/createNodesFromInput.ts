@@ -74,7 +74,7 @@ export const createNodesFromSchemaInput = (schema: string): Node[] => {
         position.x += 300;
         if (nodes.length % 3 === 0) {
           position.x = 100;
-          position.y += 400;
+          position.y += 500;
         }
         currentTable = null;
       }

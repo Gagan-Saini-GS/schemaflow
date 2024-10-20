@@ -1,38 +1,38 @@
 import { Node, Edge } from "@xyflow/react";
 
 export const basicInitialSchema = `Table Users{
-     id int,
-     name string,
-     email string,
-     password hashcode,
-     avatar string,
-     bio string,
+  id int,
+  name string,
+  email string,
+  password hashcode,
+  avatar string,
+  bio string,
 }
 
 Table Posts{
-    id int,
-    title string,
-    image_url string,
-    user_id int > ref Users.id,
+  id int,
+  title string,
+  image_url string,
+  user_id int > ref Users.id,
 }
 
 Table Comments{
-    id int,
-    content string,
-    post_id int > ref Posts.id,
-    user_id int > ref Users.id,
+  id int,
+  content string,
+  post_id int > ref Posts.id,
+  user_id int > ref Users.id,
 }`;
 
 export const expertInitialSchema = `Table Users {
-    id int [primary_key],
-    name string [50],
-    email string [UNIQUE, NOT NULL],
-    password string [not null],
-    avatar string,
-    bio string [250, NOTE="Programmer"],
-    status UserStatus,
-    created_at Date [DEFAULT="Date.now()"],
-    updated_at Date,
+  id int [primary_key],
+  name string [50],
+  email string [UNIQUE, NOT NULL],
+  password string [not null],
+  avatar string,
+  bio string [250, NOTE="Programmer"],
+  status UserStatus,
+  created_at Date [DEFAULT="Date.now()"],
+  updated_at Date,
 }
 
 Table Posts {

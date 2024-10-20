@@ -17,7 +17,7 @@ const Navbar: React.FC<T_Navbar> = ({
 }) => {
   return (
     <div className="h-[6%] flex justify-between px-2 items-center bg-Light/10 text-Light shadow-md">
-      <div className="text-2xl font-medium">Schema Flow</div>
+      <div className="text-2xl font-medium text-Blue">Schema Flow</div>
       <div className="h-[70%] flex items-center gap-2">
         <div className="h-full">
           <input

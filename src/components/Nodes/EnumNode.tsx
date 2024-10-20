@@ -12,7 +12,7 @@ type T_EnumNode = {
 
 const EnumNode: React.FC<T_EnumNode> = ({ data }) => {
   return (
-    <div className="w-60 bg-White shadow-md rounded-md">
+    <div className="w-64 bg-White shadow-md rounded-md">
       <Handle
         id={`${data.enumName}-Enum-target`}
         position={Position.Top}

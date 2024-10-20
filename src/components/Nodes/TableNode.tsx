@@ -10,7 +10,7 @@ type T_TableNode = {
 
 const TableNode: React.FC<T_TableNode> = ({ data }) => {
   return (
-    <div className="w-60 bg-White shadow-md rounded-md">
+    <div className="w-64 bg-White shadow-md rounded-md">
       <div className="text-lg font-bold bg-Blue text-White text-center py-2 rounded-t-md">
         {data.tableName}
       </div>
