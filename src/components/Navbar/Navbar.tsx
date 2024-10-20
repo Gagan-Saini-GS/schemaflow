@@ -1,6 +1,7 @@
 import React from "react";
 import { GrDocumentText } from "react-icons/gr";
 import { PiExportBold } from "react-icons/pi";
+import SchemaFlowLogo from "../../assets/images/schem_flow_logo-transparent.png";
 
 type T_Navbar = {
   setOpenDocs: React.Dispatch<React.SetStateAction<boolean>>;
@@ -17,7 +18,10 @@ const Navbar: React.FC<T_Navbar> = ({
 }) => {
   return (
     <div className="h-[6%] flex justify-between px-2 items-center bg-Light/10 text-Light shadow-md">
-      <div className="text-2xl font-medium text-Blue">Schema Flow</div>
+      <div className="flex items-center gap-2">
+        <img src={SchemaFlowLogo} alt="Schema Flow Logo" className="w-8 h-8" />
+        <div className="text-2xl font-medium text-Blue">Schema Flow</div>
+      </div>
       <div className="h-[70%] flex items-center gap-2">
         <div className="h-full">
           <input
