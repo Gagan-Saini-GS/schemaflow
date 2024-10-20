@@ -2,7 +2,7 @@ import { Edge, Node } from "@xyflow/react";
 import React, { useEffect, useState } from "react";
 import { createNodesFromSchemaInput } from "../../utils/createNodesFromInput";
 import { createEdgesFromSchemaInput } from "../../utils/createEdgesFromInput";
-import { basicInitialSchema, expertInitialSchema } from "../../data/dbschema";
+import { basicInitialSchema } from "../../data/dbschema";
 import { handleExport } from "../../utils/downloadSchemaTextFile";
 import AceEditor from "react-ace";
 import "ace-builds/src-noconflict/mode-mysql";
@@ -23,7 +23,7 @@ const Sidebar: React.FC<T_Sidbar> = ({
   exportSchema,
   setExportSchema,
 }) => {
-  const [schema, setSchema] = useState<string>(expertInitialSchema);
+  const [schema, setSchema] = useState<string>(basicInitialSchema);
 
   const convertSchema = () => {
     const newNodes: Node[] = createNodesFromSchemaInput(schema);
