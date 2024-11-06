@@ -72,7 +72,7 @@ export const createNodesFromSchemaInput = (schema: string): Node[] => {
       if (currentTable) {
         nodes.push(currentTable);
         position.x += 300;
-        if (nodes.length % 3 === 0) {
+        if ((nodes.length + enums.length) % 4 === 0) {
           position.x = 100;
           position.y += 500;
         }
@@ -81,6 +81,10 @@ export const createNodesFromSchemaInput = (schema: string): Node[] => {
       if (currentEnum) {
         enums.push(currentEnum);
         position.x += 300;
+        if ((nodes.length + enums.length) % 4 === 0) {
+          position.x = 100;
+          position.y += 500;
+        }
         currentEnum = null;
       }
     } else if (currentTable) {
@@ -211,9 +215,9 @@ export const createNodesFromSchemaInput2 = (schema: string): Node[] => {
       if (currentTable) {
         nodes.push(currentTable);
         position.x += 300;
-        if (nodes.length % 3 === 0) {
+        if (nodes.length % 4 === 0) {
           position.x = 100;
-          position.y += 400;
+          position.y += 500;
         }
         currentTable = null;
       }
